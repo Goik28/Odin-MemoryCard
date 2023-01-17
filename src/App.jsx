@@ -1,25 +1,27 @@
-import { useState } from "react";
+import "./app.css";
+import { CardsContainer } from "./components/CardsContainer";
+import { Control } from "./components/Control";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <div></div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <main>
+      <Control />
+      <CardsContainer />
+    </main>
   );
 }
 
 export default App;
+
+export function Header() {
+  return <header>MEMORY CARD GAME</header>;
+}
+
+export function Footer() {
+  return (
+    <footer>
+      Created by&nbsp;<a href="https://github.com/Goik28">Goik28</a>&nbsp;for
+      the Memory Card game project on The Odin Project course
+    </footer>
+  );
+}
