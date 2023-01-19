@@ -1,9 +1,10 @@
-export function Card(props){
+import "./card.css";
 
-    return(
-        <div className="card">
-            <img src={props.img} alt={props.name} />
-            <p>{props.name}</p>
-        </div>
-    );
+export function Card({ img, name }) {
+  return (
+    <div className="card">
+      <img src={img} alt={name} />
+      <p>{name}</p>
+    </div>
+  );
 }
