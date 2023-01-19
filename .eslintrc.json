@@ -19,5 +19,6 @@
   },
   "plugins": ["react"],
   "rules": {
+    "react/prop-types": ["disabled"]
   }
 }

@@ -2,19 +2,40 @@ import { useState } from "react";
 import "./app.css";
 import { CardsContainer } from "./components/CardsContainer";
 import { Control } from "./components/Control";
+import { charList } from "./components/CharacterList";
 
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [topScore, setTopScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentItemSelection, changeCurrentSelection] = useState([]);
-  const items = [];
+  const items = charList;
+  const selectedItems = [];
 
-  for (let index = 0; index < 20; index++) {
-    items.push(index);
+  function randomizeItems() {
+    for (let index = 0; index < 9; index++) {
+      const randomId = Math.floor(Math.random() * 20);
+      if (!currentItemSelection.includes((element) => element.id == randomId)) {
+        changeCurrentSelection(
+          currentItemSelection.push(
+            items.find((element) => element.id == randomId)
+          )
+        );
+      } else {
+        index--;
+      }
+    }
+    if (
+      currentItemSelection.every((element) => {
+        return selectedItems.includes(element);
+      })
+    ) {
+      randomizeItems();
+    }else{
+      return currentItemSelection;
+    }
   }
 
-  const selectedItems = [];
 
   function selectItem(item) {
     selectedItems.push(item);
@@ -30,9 +51,8 @@ function App() {
         setIsPlaying={setIsPlaying}
       />
       <CardsContainer
-        items={items}
-        currentItemSelection={currentItemSelection}
-        changeCurrentSelection={changeCurrentSelection}
+        currentItemSelection={randomizeItems()}
+        changeCurrentSelection={randomizeItems}
         selectItem={selectItem}
         setCurrentScore={setCurrentScore}
       />
