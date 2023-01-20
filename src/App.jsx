@@ -8,9 +8,9 @@ function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [topScore, setTopScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentItemSelection, changeCurrentSelection] = useState([]);
+  const [currentItemSelection, setCurrentSelection] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
   const items = charList;
-  const selectedItems = [];
 
   function randomizeItems() {
     const randItems = [];
@@ -25,14 +25,14 @@ function App() {
       }
     }
     if (
-      !selectedItems.every((selectedElement) => {
-        currentItemSelection.includes(selectedElement);
+      !randItems.every((selectedElement) => {
+        selectedItems.includes(selectedElement);
       })
     ) {
-      changeCurrentSelection(randItems);
-    }else{
+      setCurrentSelection(randItems);
+    } else {
       randomizeItems();
-    }    
+    }
   }
 
   useEffect(() => {
@@ -40,7 +40,18 @@ function App() {
   }, []);
 
   function selectItem(item) {
-    selectedItems.push(item);
+    if (!selectedItems.includes(item)) {
+      setSelectedItems(selectedItems.concat([item]));
+      setCurrentScore(currentScore + 1);
+      randomizeItems();
+    } else {
+      setSelectedItems([]);
+      if (currentScore > topScore) {
+        setTopScore(currentScore);
+      }
+      setIsPlaying(false);
+      setCurrentSelection([]);
+    }
   }
 
   return (
@@ -54,9 +65,7 @@ function App() {
       />
       <CardsContainer
         currentItemSelection={currentItemSelection}
-        changeCurrentSelection={randomizeItems}
         selectItem={selectItem}
-        setCurrentScore={setCurrentScore}
       />
     </main>
   );

@@ -1,19 +1,21 @@
 import { useEffect } from "react";
 import { Card } from "./Card";
-import "./cardContainer.css"
+import "./cardContainer.css";
 
 export function CardsContainer({
   currentItemSelection,
-  changeCurrentSelection,
   selectItem,
-  setCurrentScore,
 }) {
   function createCardsList() {
-    
-
-    return (currentItemSelection.map((element) => {
-      return <Card key={element.id} name={element.name} img={element.img} />;
-    }));
+    return currentItemSelection.map((element) => {
+      return (
+        <Card
+          key={element.id}
+          item={element}
+          selectItem={selectItem}
+        />
+      );
+    });
   }
 
   return <ul className="cardContainer">{createCardsList()}</ul>;
