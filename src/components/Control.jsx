@@ -1,11 +1,21 @@
-export function Control() {
+export function Control({ currentScore, topScore, isPlaying, restartGame }) {
+  function startGameHandler(e) {
+    e.preventDefault();
+    restartGame();
+  }
+
   return (
     <div>
-      <p>Click on a card to gain a point. You lose when you repeat a card.</p>
+      <p>
+        How to play: Click on a card to gain a point. You lose when you repeat a
+        card.
+      </p>
       <div>
-        <button>Start Game</button>
-        <p>Your score: </p>
-        <p>Best score: </p>
+        <button disabled={isPlaying} onClick={startGameHandler}>
+          Restart Game
+        </button>
+        <p>Your score: {currentScore}</p>
+        <p>Best score: {topScore}</p>
       </div>
     </div>
   );

@@ -54,14 +54,19 @@ function App() {
     }
   }
 
+  function restartGame() {
+    setCurrentScore(0);
+    randomizeItems();
+    setIsPlaying(true);
+  }
+
   return (
     <main>
       <Control
         currentScore={currentScore}
         topScore={topScore}
-        setTopScore={setTopScore}
         isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
+        restartGame={restartGame}
       />
       <CardsContainer
         currentItemSelection={currentItemSelection}
