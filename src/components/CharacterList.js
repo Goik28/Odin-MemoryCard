@@ -15,7 +15,7 @@ export const charList = [
     {id: 13, name:"Popo", img:"/src/assets/Popo.png"},
     {id: 14, name:"Roshi", img:"/src/assets/Roshi.jpg"},
     {id: 15, name:"Tien Shinhan", img:"/src/assets/TienShinhan.png"},
-    {id: 16, name:"Trunk", img:"/src/assets/Trunks.png"},
+    {id: 16, name:"Trunks", img:"/src/assets/Trunks.png"},
     {id: 17, name:"Vegeta", img:"/src/assets/Vegeta.png"},
     {id: 18, name:"Yajirobe", img:"/src/assets/Yajirobe.png"},
     {id: 19, name:"Yamcha", img:"/src/assets/Yamcha.png"},

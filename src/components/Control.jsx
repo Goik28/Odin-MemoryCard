@@ -1,3 +1,5 @@
+import "./control.css";
+
 export function Control({ currentScore, topScore, isPlaying, restartGame }) {
   function startGameHandler(e) {
     e.preventDefault();
@@ -5,7 +7,7 @@ export function Control({ currentScore, topScore, isPlaying, restartGame }) {
   }
 
   return (
-    <div>
+    <div className="control">
       <p>
         How to play: Click on a card to gain a point. You lose when you repeat a
         card.

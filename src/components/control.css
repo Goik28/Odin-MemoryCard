@@ -1,0 +1,21 @@
+.control{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+.control>div{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.control>div>button{
+    font-size: 1.3rem;
+    padding: 5px;
+}
+
+.control>div>p{
+    font-weight: 700;
+}

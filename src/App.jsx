@@ -10,16 +10,16 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentItemSelection, setCurrentSelection] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
-  const items = charList;
+  const [isVictorious, setIsVictorious] = useState(1);
 
   function randomizeItems() {
     const randItems = [];
-    for (let index = 0; index < 9; index++) {
+    for (let index = 0; index < 10; index++) {
       const randomId = Math.floor(Math.random() * 20);
       if (
         !randItems.includes(randItems.find((element) => element.id == randomId))
       ) {
-        randItems.push(items.find((element) => element.id == randomId));
+        randItems.push(charList.find((element) => element.id == randomId));
       } else {
         index--;
       }
@@ -43,21 +43,49 @@ function App() {
     if (!selectedItems.includes(item)) {
       setSelectedItems(selectedItems.concat([item]));
       setCurrentScore(currentScore + 1);
+      if (currentScore == 20) {
+        setIsPlaying(false);
+        setIsVictorious(2);
+        return;
+      }
       randomizeItems();
     } else {
-      setSelectedItems([]);
       if (currentScore > topScore) {
         setTopScore(currentScore);
       }
       setIsPlaying(false);
-      setCurrentSelection([]);
+      setIsVictorious(0);
     }
   }
 
   function restartGame() {
+    setSelectedItems([]);
     setCurrentScore(0);
     randomizeItems();
     setIsPlaying(true);
+    setIsVictorious(1);
+  }
+
+  function displayCardsOrVictory() {
+    switch (isVictorious) {
+      case 0:
+        return (
+          <div className="defeat">
+            DEFEAT! YOU GOT {currentScore}/20 CARDS RIGHT.
+          </div>
+        );
+      case 2:
+        return (
+          <div className="victory">VICTORY! YOU GOT THE 20 CARDS RIGHT.</div>
+        );
+      default:
+        return (
+          <CardsContainer
+            currentItemSelection={currentItemSelection}
+            selectItem={selectItem}
+          />
+        );
+    }
   }
 
   return (
@@ -68,10 +96,7 @@ function App() {
         isPlaying={isPlaying}
         restartGame={restartGame}
       />
-      <CardsContainer
-        currentItemSelection={currentItemSelection}
-        selectItem={selectItem}
-      />
+      {displayCardsOrVictory()}
     </main>
   );
 }

@@ -1,6 +1,6 @@
 .card {
   height: 300px;
-  width: 250px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,9 +8,10 @@
 }
 
 .card > img {
-  width: 250px;
+  height: 300px;
+  width: 200px;
   object-fit: cover;
-  object-position: left top;
+  object-position: center top;
   overflow: hidden;
 }
 

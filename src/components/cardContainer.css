@@ -1,6 +1,8 @@
 .cardContainer{
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(5, 200px);
     gap: 25px;
+    margin: auto 25px;
+    
 }
