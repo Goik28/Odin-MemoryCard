@@ -23,6 +23,7 @@
   "bugs": {
     "url": "https://github.com/Goik28/Odin-MemoryCard/issues"
   },
+  "homepage": "https://goik28.github.io/Odin-MemoryCard/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
