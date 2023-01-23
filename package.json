@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build --base=./",
-    "preview": "vite preview --host"
+    "preview": "vite preview --host",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-react": "^7.32.0",
+    "gh-pages": "^5.0.0",
     "prettier": "^2.8.2",
     "vite": "^4.0.0"
   }
