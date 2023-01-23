@@ -24,7 +24,7 @@ header {
   padding-bottom: 5px;
   border: solid black 0px;
   border-bottom-width: 1px;
-  width: 700px;
+  width: 750px;
   font-size: 2rem;
 }
 
@@ -36,7 +36,7 @@ main {
 }
 
 footer {
-  font-weight: 700;
+  font-weight: 750;
   display: flex;
   justify-content: center;
   margin-top: 15px;
@@ -44,7 +44,7 @@ footer {
   padding-top: 5px;
   border: solid black 0px;
   border-top-width: 1px;
-  width: 700px;
+  width: 750px;
 }
 
 .defeat,
