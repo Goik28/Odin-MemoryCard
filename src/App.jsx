@@ -24,31 +24,28 @@ function App() {
         index--;
       }
     }
-    if (
-      !randItems.every((selectedElement) => {
-        selectedItems.includes(selectedElement);
-      })
-    ) {
-      setCurrentSelection(randItems);
+    if (randItems.every((value) => selectedItems.includes(value))) {
+      randomizeItems();      
     } else {
-      randomizeItems();
+      setCurrentSelection(randItems);
     }
   }
 
   useEffect(() => {
     randomizeItems();
-  }, []);
+  }, [selectedItems]);
+
+  useEffect(() => {
+    if (currentScore == 20) {
+      setIsPlaying(false);
+      setIsVictorious(2);
+    }
+  }, [currentScore]);
 
   function selectItem(item) {
     if (!selectedItems.includes(item)) {
       setSelectedItems(selectedItems.concat([item]));
       setCurrentScore(currentScore + 1);
-      if (currentScore == 20) {
-        setIsPlaying(false);
-        setIsVictorious(2);
-        return;
-      }
-      randomizeItems();
     } else {
       if (currentScore > topScore) {
         setTopScore(currentScore);
